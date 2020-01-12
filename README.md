@@ -1,4 +1,4 @@
-# balena-pihole
+# balena-pihole-unbound
 
 If you're looking for a way to quickly and easily get up and running with a Pi-hole device for your home network, this is the project for you.
 
