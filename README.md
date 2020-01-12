@@ -5,7 +5,7 @@ If you're looking for a way to quickly and easily get up and running with a Pi-h
 This project is a [balenaCloud](https://www.balena.io/cloud) stack with the following services:
 
 * [Pi-hole](https://hub.docker.com/r/pihole/pihole/) (including [PADD](https://github.com/jpmck/PADD))
-* [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy) _(optional)_
+* [unbound](https://unbound.net/) _(optional)_
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
 
@@ -29,14 +29,14 @@ Device Variables apply to all services within the application, and can be applie
 |`DNSMASQ_LISTENING`|`eth0`|We set this to `eth0` to indicate we want DNSMASQ to listen on the ethernet interface of the Raspberry Pi. If you're connecting to your network with WiFi replace this with `wlan0`|
 |`INTERFACE`|`eth0`|As above.|
 |`WEBPASSWORD`|`mysecretpassword`|_(optional)_ password for accessing the web-based interface of Pi-hole - you won’t be able to access the admin panel without defining a password here.
-|`DNS1`|`127.0.0.1#5053`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [dnscrypt-proxy](https://github.com/DNSCrypt/dnscrypt-proxy) project here but you can specify your own.|
+|`DNS1`|`127.0.0.1#5053`|_(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [unbound](https://unbound.net/) project here but you can specify your own.|
 |`DNS2`|`127.0.0.1#5053`|_(optional)_ Secondary DNS server - see above.|
 |`ServerIP`|`x.x.x.x`|_(recommended)_ Set to your server's LAN IP, used by web block modes and lighttpd bind address.|
 
 ## Usage
 
 * <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
-* <https://github.com/DNSCrypt/dnscrypt-proxy/wiki>
+* <https://nlnetlabs.nl/documentation/unbound/>
 
 ## Help
 
@@ -49,7 +49,7 @@ Kyle Harding <https://klutchell.dev>
 ## Acknowledgments
 
 * <https://github.com/pi-hole/docker-pi-hole/>
-* <https://github.com/DNSCrypt/dnscrypt-proxy>
+* <https://gitlab.com/klutchell/unbound>
 
 ## License
 
