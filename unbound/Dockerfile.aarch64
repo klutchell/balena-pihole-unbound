@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-alpine:3.10 as build
+FROM balenalib/aarch64-alpine:3.10 as build
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
