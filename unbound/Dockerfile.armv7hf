@@ -43,7 +43,9 @@ WORKDIR /var/run/unbound
 RUN mv /opt/unbound/etc/unbound/unbound.conf /opt/unbound/etc/unbound/example.conf \
 	&& rm -rf /tmp/* /opt/*/include /opt/*/man /opt/*/share \
 	&& strip /opt/unbound/sbin/unbound \
-	&& strip /opt/ldns/bin/drill
+	&& strip /opt/ldns/bin/drill \
+	&& (/opt/unbound/sbin/unbound-anchor -v || :)
+
 
 # ----------------------------------------------------------------------------
 
