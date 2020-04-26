@@ -1,4 +1,4 @@
-FROM balenalib/aarch64-alpine:3.10 as build
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine:3.10 as build
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
