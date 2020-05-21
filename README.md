@@ -4,8 +4,9 @@ If you're looking for a way to quickly and easily get up and running with a Pi-h
 
 This project is a [balenaCloud](https://www.balena.io/cloud) stack with the following services:
 
-* [Pi-hole](https://hub.docker.com/r/pihole/pihole/) (including [PADD](https://github.com/jpmck/PADD))
-* [unbound](https://unbound.net/) _(optional)_
+- [Pi-hole](https://hub.docker.com/r/pihole/pihole/) (including [PADD](https://github.com/jpmck/PADD))
+- [unbound](https://unbound.net/) _(optional)_
+- [duplicati](https://www.duplicati.com/) _(optional)_
 
 balenaCloud is a free service to remotely manage and update your Raspberry Pi through an online dashboard interface, as well as providing remote access to the Pi-hole web interface without any additional configuation.
 
@@ -35,8 +36,13 @@ Device Variables apply to all services within the application, and can be applie
 
 ## Usage
 
-* <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
-* <https://nlnetlabs.nl/documentation/unbound/>
+### configure pihole
+
+Connect to `http://<device-ip>:80/admin` and log in to the dashboard with your provided root password.
+
+### enable duplicati
+
+Connect to `http://<device-ip>:8200` and configure a new backup using any online service you prefer as the Destination and `/source` as Source Data.
 
 ## Help
 
@@ -52,8 +58,9 @@ Kyle Harding <https://klutchell.dev>
 
 ## Acknowledgments
 
-* <https://github.com/pi-hole/docker-pi-hole/>
-* <https://gitlab.com/klutchell/unbound>
+- <https://hub.docker.com/r/pihole/pihole/>
+- <https://hub.docker.com/r/klutchell/unbound/>
+- <https://hub.docker.com/r/linuxserver/duplicati>
 
 ## License
 

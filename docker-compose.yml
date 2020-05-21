@@ -1,23 +1,39 @@
-version: '2.1'
+version: "2.1"
 
 volumes:
   pihole_config:
   dnsmasq_config:
+  duplicati:
 
 services:
+  # https://hub.docker.com/r/pihole/pihole
   pihole:
     build: ./pihole
     privileged: true
     volumes:
-      - 'pihole_config:/etc/pihole'
-      - 'dnsmasq_config:/etc/dnsmasq.d'
+      - "pihole_config:/etc/pihole"
+      - "dnsmasq_config:/etc/dnsmasq.d"
     dns:
-      - '127.0.0.1'
-      - '1.1.1.1'
+      - "127.0.0.1"
+      - "1.1.1.1"
     network_mode: host
 
-  # set pihole DNS1 and DNS2 service variables to 127.0.0.1#5053 to use unbound for upstream DNS
+  # https://hub.docker.com/r/klutchell/unbound/
   unbound:
     build: ./unbound
     ports:
-      - '5053:5053/udp'
+      - "5053:5053/udp"
+
+  # https://hub.docker.com/r/linuxserver/duplicati
+  duplicati:
+    image: linuxserver/duplicati:arm32v7-latest
+    environment:
+      PUID: "0"
+      PGID: "0"
+      CLI_ARGS: --webservice-interface=any
+    ports:
+      - 8200:8200/tcp
+    volumes:
+      - duplicati:/config
+      - pihole_config:/source/pihole:ro
+      - dnsmasq_config:/source/dnsmasq:ro
