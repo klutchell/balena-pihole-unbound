@@ -8,7 +8,7 @@ RUN install_packages curl build-essential libelf-dev libssl-dev pkg-config git f
 WORKDIR /usr/src
 
 ENV BALENA_MACHINE_NAME "raspberrypi3"
-ENV VERSION "2.47.0+rev1.prod"
+ENV VERSION "2.51.1+rev1.prod"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -16,7 +16,7 @@ RUN curl -L "https://files.balena-cloud.com/images/${BALENA_MACHINE_NAME}/${VERS
  
 RUN make -C kernel_modules_headers -j"$(nproc)" modules_prepare
 
-FROM linuxserver/wireguard:arm32v7-v1.0.20200820-ls28
+FROM linuxserver/wireguard:arm32v7-v1.0.20200827-ls29
 
 COPY --from=build /usr/src/kernel_modules_headers/ /usr/src/kernel_modules_headers/
 
