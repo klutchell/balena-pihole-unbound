@@ -15,7 +15,7 @@ balenaCloud is a free service to remotely manage and update your Raspberry Pi th
 
 You can one-click-deploy this project to balena using the button below:
 
-[![](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
+[![](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/klutchell/balena-pihole-unbound&defaultDeviceType=raspberry-pi)
 
 ## Manual Deployment
 
@@ -65,12 +65,6 @@ Connect to `http://<device-ip>:8200` and configure a new backup using any online
 ## Help
 
 If you're having trouble getting the project running, submit an issue or post on the forums at <https://forums.balena.io>.
-
-## Author
-
-Kyle Harding <https://klutchell.dev>
-
-[![](https://cdn.buymeacoffee.com/buttons/default-orange.png)](https://www.buymeacoffee.com/klutchell)
 
 ## References
 
