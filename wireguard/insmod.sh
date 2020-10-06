@@ -13,7 +13,7 @@ set -ex
 # read the current device type and version from balena env vars
 BALENA_MACHINE_NAME="${BALENA_DEVICE_TYPE}"
 # assume prod but allow override 
-VERSION="$(echo "${BALENA_HOST_OS_VERSION}" | awk '{print $2}').${BALENA_HOST_OS_MODE:-prod}"
+VERSION="$(echo "${BALENA_HOST_OS_VERSION}" | awk '{print $2}').${BALENA_HOST_OS_VARIANT:-prod}"
 
 # install required compile tools
 # https://www.balena.io/blog/how-to-run-wireguard-vpn-in-balenaos/
