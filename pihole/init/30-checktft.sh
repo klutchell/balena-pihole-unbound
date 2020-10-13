@@ -28,6 +28,6 @@ DBUS_SYSTEM_BUS_ADDRESS='unix:path=/host/run/dbus/system_bus_socket' \
 
 # fix for PADD fonts
 # https://github.com/klutchell/balena-pihole/pull/28
-RUN sed -i "s/^FONTFACE.*/FONTFACE=\"${FONTFACE}\"/" /etc/default/console-setup
-RUN sed -i "s/^FONTSIZE.*/FONTSIZE=\"${FONTSIZE}\"/" /etc/default/console-setup
+sed -i "s/^FONTFACE.*/FONTFACE=\"${FONTFACE}\"/" /etc/default/console-setup
+sed -i "s/^FONTSIZE.*/FONTSIZE=\"${FONTSIZE}\"/" /etc/default/console-setup
 dpkg-reconfigure console-setup
