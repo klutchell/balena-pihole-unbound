@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 # print version and exit if wireguard module is already loaded
 if lsmod | grep wireguard >/dev/null 2>&1
