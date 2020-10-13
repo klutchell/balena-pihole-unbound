@@ -8,25 +8,22 @@ then
 	exit 0
 fi
 
+# install required compile tools
+# https://www.balena.io/blog/how-to-run-wireguard-vpn-in-balenaos/
+apt-get update
+apt-get install -y --no-install-recommends curl build-essential libelf-dev libssl-dev pkg-config git flex bison bc python kmod
+
+rm -rf /usr/src 2>/dev/null
+mkdir -p /usr/src
+
+(cd /usr/src || exit 1
+
 set -ex
 
 # read the current device type and version from balena env vars
 BALENA_MACHINE_NAME="${BALENA_DEVICE_TYPE}"
 # assume prod but allow override 
 VERSION="$(echo "${BALENA_HOST_OS_VERSION}" | awk '{print $2}').${BALENA_HOST_OS_VARIANT:-prod}"
-
-# install required compile tools
-# https://www.balena.io/blog/how-to-run-wireguard-vpn-in-balenaos/
-apt-get update
-apt-get install -y --no-install-recommends curl build-essential libelf-dev libssl-dev pkg-config git flex bison bc python kmod
-apt-get clean
-rm -rf /var/lib/apt/lists/*
-
-# recreate working directory
-rm -rf /usr/src || true
-mkdir -p /usr/src
-
-(cd /usr/src || exit 1
 
 # download kernel sources from balena
 curl -L "https://files.balena-cloud.com/images/${BALENA_MACHINE_NAME}/${VERSION/+/%2B}/kernel_modules_headers.tar.gz" -O
@@ -43,12 +40,13 @@ modprobe udp_tunnel
 modprobe ip6_udp_tunnel
 
 # dump module info to logs
-modinfo "/app/wireguard-linux-compat/src/wireguard.ko"
+modinfo /app/wireguard-linux-compat/src/wireguard.ko
 
 # insert wireguard module and dump dmesg if it fails
-if ! insmod "/app/wireguard-linux-compat/src/wireguard.ko"
+if ! insmod /app/wireguard-linux-compat/src/wireguard.ko
 then
 	dmesg | grep wireguard
 	sleep infinity
 fi
+
 )

@@ -14,9 +14,9 @@ RUN apk add --no-cache \
 
 WORKDIR /tmp/unbound
 
-ARG UNBOUND_VERSION=unbound-1.10.1
+ARG UNBOUND_VERSION=unbound-1.12.0
 ARG UNBOUND_SOURCE=https://www.nlnetlabs.nl/downloads/unbound/
-ARG UNBOUND_SHA1=9932931d495248b4e45d278b4679efae29238772
+ARG UNBOUND_SHA1=68009078d5f5025c95a8c9fe20b9e84335d53e2d
 
 RUN curl -fsSL --retry 3 "${UNBOUND_SOURCE}${UNBOUND_VERSION}.tar.gz" -o unbound.tar.gz \
 	&& echo "${UNBOUND_SHA1}  unbound.tar.gz" | sha1sum -c - \
@@ -46,9 +46,6 @@ RUN mv /opt/unbound/etc/unbound/unbound.conf /opt/unbound/etc/unbound/example.co
 	&& strip /opt/ldns/bin/drill \
 	&& (/opt/unbound/sbin/unbound-anchor -v || :)
 
-
-# ----------------------------------------------------------------------------
-
 FROM scratch
 
 COPY --from=build /etc/passwd /etc/group /etc/
@@ -68,7 +65,3 @@ ENTRYPOINT ["unbound", "-d"]
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 	CMD [ "drill", "-p", "5053", "nlnetlabs.nl", "@127.0.0.1" ]
-
-RUN ["unbound", "-V"]
-
-RUN ["drill", "-v"]

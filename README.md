@@ -33,6 +33,8 @@ Application envionment variables apply to all services within the application, a
 
 ### pi-hole
 
+<https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
+
 Connect to `http://<device-ip>:80/admin` and log in to the dashboard with your provided root password.
 
 Device service variables are available to the code running on the specified service on this particular device. If both the application and the device have a service variable of the same name and service, the code on this device will see the value of the device service variables. In other words, device service variables redefine (or override) application-wide service variables of the same name and service.
@@ -45,6 +47,12 @@ Device service variables are available to the code running on the specified serv
 | `DNS1`              | `127.0.0.1#5053`   | _(optional)_ Tell Pi-hole where to forward DNS requests that aren’t blocked. We’re using the [unbound](https://unbound.net/) project here but you can specify your own.             |
 | `DNS2`              | `127.0.0.1#5053`   | _(optional)_ Secondary DNS server - see above.                                                                                                                                      |
 | `ServerIP`          | `x.x.x.x`          | _(recommended)_ Set to your server's LAN IP, used by web block modes and lighttpd bind address.                                                                                     |
+
+## PADD
+
+Here's a guide to add a display to your Pi-hole for monitoring and stats:
+
+<https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
 
 ### wireguard
 
@@ -60,6 +68,8 @@ Device service variables are available to the code running on the specified serv
 
 ### duplicati
 
+<https://docs.linuxserver.io/images/docker-duplicati>
+
 Connect to `http://<device-ip>:8200` and configure a new backup using any online service you prefer as the Destination and `/source` as Source Data.
 
 ## Help
@@ -74,7 +84,10 @@ If you're having trouble getting the project running, submit an issue or post on
 - <https://docs.linuxserver.io/images/docker-wireguard>
 - <https://github.com/balena-os/kernel-module-build>
 - <https://github.com/jaredallard-home/wireguard-balena-rpi>
+- <https://www.balena.io/blog/deploy-network-wide-ad-blocking-with-pi-hole-and-a-raspberry-pi/>
 - <https://www.balena.io/blog/how-to-run-wireguard-vpn-in-balenaos/>
+- <https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
+- <https://www.raspberrypi.org/forums/viewtopic.php?p=1137258>
 
 ## License
 
