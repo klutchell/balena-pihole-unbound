@@ -2,4 +2,5 @@
 # shellcheck shell=bash
 
 s6-echo "Starting PADD"
-/usr/src/padd.sh 2> /dev/null > /dev/tty1
+sleep 30
+/usr/src/padd.sh 2> /dev/stderr > /dev/tty1
