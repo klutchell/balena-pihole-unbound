@@ -15,7 +15,7 @@ balenaCloud is a free service to remotely manage and update your Raspberry Pi th
 
 You can one-click-deploy this project to balena using the button below:
 
-[![](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/klutchell/balena-pihole-unbound&defaultDeviceType=raspberry-pi)
+[![](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/klutchell/balena-pihole-unbound&defaultDeviceType=raspberry-pi)
 
 ## Manual Deployment
 
@@ -88,7 +88,3 @@ If you're having trouble getting the project running, submit an issue or post on
 - <https://www.balena.io/blog/how-to-run-wireguard-vpn-in-balenaos/>
 - <https://www.balena.io/blog/add-a-display-to-your-pi-hole-for-monitoring-and-stats/>
 - <https://www.raspberrypi.org/forums/viewtopic.php?p=1137258>
-
-## License
-
-[MIT License](./LICENSE)
