@@ -1,8 +1,24 @@
-applicationEnvironmentVariables:
-    - TZ: 'America/Toronto'
+version: "2"
+slug: "pihole-unbound"
+name: "Pi-hole & unbound"
+type: "sw.application"
+assets:
+  - url: "https://github.com/klutchell/balena-pihole-unbound"
+    name: "repository"
+  - url: "https://raw.githubusercontent.com/klutchell/balena-pihole-unbound/main/logo.png"
+    name: "logo"
+data:
+  description: "Pi-hole is a Linux network-level advertisement and Internet tracker blocking application"
+  applicationEnvironmentVariables:
     - DNSMASQ_LISTENING: 'eth0'
     - INTERFACE: 'eth0'
     - WEBPASSWORD: 'mysecretpassword'
     - DNS1: '127.0.0.1#5053'
     - DNS2: '127.0.0.1#5053'
-    - PEERS: '4'
+  defaultDeviceType: "raspberrypi3"
+  supportedDeviceTypes:
+    - "raspberry-pi2"
+    - "raspberrypi3"
+    - "raspberrypi3-64"
+    - "raspberrypi4-64"
+    - "fincm3"
